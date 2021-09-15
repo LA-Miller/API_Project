@@ -9,12 +9,13 @@ const searchForm = document.querySelector('form');
 const section = document.querySelector('section');
 
 searchForm.addEventListener('submit', fetchResults);
+endpoint = "pokemon?limit=100&offset=200";
 
 function fetchResults(e) {
     console.log(e);
     e.preventDefault();
 
-    url = `${baseURL}pokemon?limit=100&offset=200`;
+    url = `${baseURL}${endpoint}`;
     console.log('URL:', url);
 
     fetch(url)
@@ -31,12 +32,12 @@ function fetchResults(e) {
 function displayResults(json) {
     console.log('Display Results', json);
 
-    while(section.firstChild) {
+    while (section.firstChild) {
         section.removeChild(section.firstChild);
     }
 
     let pokemon = json.results;
-    for (i = 0; i < pokemon.length; i++) {        
+    for (i = 0; i < pokemon.length; i++) {
         // console.log(pokemon[i]);
 
         let article = document.createElement('article');
@@ -50,23 +51,26 @@ function displayResults(json) {
         console.log('Current:', current);
 
         heading.textContent = '';
-       
-        for(let j = 0; j < current.name.length; j++) {
+
+        for (let j = 0; j < current.name.length; j++) {
             let span = document.createElement('span');
             span.textContent += current.name[j];
 
-            heading.appendChild(span);       
+            heading.appendChild(span);
         }
         console.log(heading);
 
-        if(current.sprites.length > 0) {
-            img.src = "http://pokeapi.co/media/sprites/pokemon"
-            img.alt = current.heading
+        endpoint = current.name[0];
+        for (let i = 0; i < current.name.length; i++) {
+            
+            console.log(url);
+            if (current.sprites.length > 0) {
+                img.src = "http://pokeapi.co/media/sprites/pokemon"
+                img.alt = current.heading;
+            }
+
+
         }
-
-
-
-        for(let i = 0; j < current.name)
 
         clearFix.setAttribute('class', 'clearFix');
 
@@ -75,12 +79,12 @@ function displayResults(json) {
         article.appendChild(para);
         article.appendChild(link);
         article.appendChild(clearFix);
-        section.appendChild(article);  
-
-        
+        section.appendChild(article);
 
 
-    }  
+
+
+    }
 }
 
 
