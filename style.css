@@ -1,0 +1,52 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    
+}
+
+.prev {
+    margin-right: 100px;
+}
+
+.next {
+    margin-left: 100px;
+}
+
+.cards {
+    background-color: red;
+    height: 350px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    
+}
+
+.results {
+    display: flex;
+    align-items: center;
+}
+
+.left {
+    background-color: black;
+    margin-left: 10%;
+}
+
+.right {
+    background-color: blue;
+    text-align: right;
+    margin-left: 60%;
+}
